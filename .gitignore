@@ -1,0 +1,16 @@
+# Project
+dist/
+
+# NodeJS
+node_modules/
+
+# MacOS
+.DS_Store
+.DS_Store?
+._*
+
+# IDE
+.idea
+
+# Tests snapshots
+src/**/__snapshots__
