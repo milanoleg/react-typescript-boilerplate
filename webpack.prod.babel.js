@@ -10,7 +10,8 @@ export default mergeSmart(commonConfig, {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        publicPath: path.join(__dirname, 'dist'),
+        filename: '[name].[hash].js',
+        publicPath: path.resolve(__dirname, 'dist'),
     },
     optimization: {
         minimizer: [

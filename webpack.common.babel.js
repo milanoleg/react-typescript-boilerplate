@@ -5,19 +5,17 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const isDevMode = process.env.NODE_ENV !== 'production';
 
 export default {
-    entry: {
-        main: './src/index.tsx'
-    },
-    output: {
-        filename: '[name].[hash].js',
-        path: path.resolve('./dist')
+    context: path.join(__dirname, 'src'),
+    entry: './index.tsx',
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 exclude: [/node_modules/],
-                'loaders': ['babel-loader','ts-loader'],
+                'loaders': ['babel-loader','awesome-typescript-loader']
             },
             {
                 test: /\.(js)$/,
@@ -53,7 +51,7 @@ export default {
                             if (isDevMode) {
                                 return '[path][name].[ext]';
                             }
-                            return '/assets/images/[hash].[ext]';
+                            return '/assets/images/[name].[hash].[ext]';
                         }
                     }
                 }]
@@ -67,7 +65,7 @@ export default {
                             if (isDevMode) {
                                 return '[path][name].[ext]';
                             }
-                            return '/assets/fonts/[hash].[ext]';
+                            return '/assets/fonts/[name].[hash].[ext]';
                         }
                     }
                 }]
@@ -76,7 +74,7 @@ export default {
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: './src/index.html',
+            template: './index.html',
             filename: './index.html'
         }),
         new CleanWebPackPlugin(['dist'])
