@@ -9,7 +9,9 @@ export default merge(commonConfig, {
         host: 'localhost',
         port: 3000,
         open: true,
-        hot: true
+        hot: true,
+        publicPath: '/',
+        historyApiFallback: true
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
